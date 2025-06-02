@@ -18,4 +18,3 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 ## ✍️ Katkı ve Güncellemeler
 
 Staj süreci boyunca yeni başlıklar ve notlar eklenmeye devam edecektir. Geri bildirim ve önerilere açığım.
-```
