@@ -1,4 +1,3 @@
-```markdown
 # Qkare Bilgi Teknolojileri Staj Notları
 
 Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konulara dair notları içermektedir. 
