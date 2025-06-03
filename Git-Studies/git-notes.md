@@ -171,7 +171,211 @@ Merge branch 'main' of https://github.com/melisklc0/Internship-Studies
 ```
 Sonrasında tekrar push ile değişiklerimi github'a gönderiyorum.
 
+---
 
 ## 4. Branch Kullanımı
+
+Ana koddan bağımsız çalışmamızı sağlar. Böylece projeyi geliştirirken oluşabilecek hatalar ana projeyi etkilemez. Yaptığımız değişiklikler kararlı hale geldikten sonra da ana kodla birleştirilip özellik güvenli bir şekilde eklenmiş olur. 
+
+Eğer yaptığımız değişikliklerde bir hata çıkarsa da branch'i silerek ana koda hiç dokunmamışım gibi geri dönebiliyoruz. Böylece ana kod her zaman stabil ve güvenilir kalıyor.
+
+Öncelikle hangi branch'ta olduğumuza bakalım:
+```bash
+$ git branch
+* main
+```
+
+Branch değiştirmek için switch kullanabiliriz. Ancak henüz bir branch oluşturmadığım için switch yaparken yeni bir branch oluşturuyorum:
+```bash
+$ git switch -c feature/login-system
+Switched to a new branch 'feature/login-system'
+```
+Branch isimlendirmeleri aşağıdaki gibi belirli kurallara göre yapılır:
+| Prefix      | Açıklama             | Örnek                  |
+|-------------|----------------------|------------------------|
+| `feature/`  | Yeni özellik         | `feature/profile-page` |
+| `bugfix/`   | Hata düzeltme        | `bugfix/navbar-crash`  |
+| `hotfix/`   | Acil düzeltme        | `hotfix/payment-error` |
+| `test/`     | Test amaçlı deneme   | `test/theme-color`     |
+
+
+Branch'ı oluşturduktan sonra login işlemleriyle ilgili yapacağım eklemeleri yapıyorum ve değişiklikleri kaydediyorum.
+```bash
+$ git add login-system.txt
+$ git commit -m "Added example file for notes"
+```
+
+Bu değişiklikleri uzak depodaki yeni branch'a gönderiyorum.
+```bash
+$ git push -u origin feature/login-system
+```
+
+Eğer yeni eklediğim kod test edilip kararlı hale getirildiyse ana kodla birleştirme yapmam gerekiyor. Bunun için öncelikle ana brancha geçiyorum.
+```bash
+$ git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+```
+
+Yeni yaptığım değişiklikler burada görünmeyecek. Ana kodda güncel olup olmadığını kontrol etmek için pull yapıyorum.
+```bash
+$ git pull origin main
+From https://github.com/melisklc0/Internship-Studies
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+```
+
+Eğer ana kod güncel ise birleştirme işlemini yapabilirim.
+```bash
+$ git merge feature/login-system
+Updating 331859e..6899906
+Fast-forward
+ Git-Studies/login-system.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 Git-Studies/login-system.txt
+```
+
+Sonrasında da push ile uzak depoya yolladım.
+```bash
+$ git push
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/melisklc0/Internship-Studies.git
+   331859e..6899906  main -> main
+```
+Birleştirme yapabilmemiz için ana kodun güncel olması gereklidir. Eski bir versiyona merge işlemi yapmak sistemde çakışmalara neden olabilir.
+
+
+
+
+
+
+## 5. Commit Yönetimi
+
+Örnek bir sunum belgesi oluşturup commitleyelim.
+```bash
+$ git add ornek-sunum.pptx
+$ git commit -m "Added presentation"
+```
+
+Ancak commit mesajını değiştirmek istiyorum.
+```bash
+$ git commit --amend
+```
+Açılan ekranda düzenlemelerimi yaparak sonrasında ESC ile komut moduna geçiyorum. *wq* ile çıkış yapıyorum.
+```bash
+Added presentation
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Tue Jun 3 09:44:58 2025 +0300
+#
+# On branch main
+# Your branch is ahead of 'origin/main' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#       new file:   ornek-sunum.pptx
+```
+
+Başka bir commit'e geçmek istediğimizde commitin ID'sini kullanabiliriz. Öncelikle log'u kontrol edelim:
+```bash
+$ git log --oneline
+dae3603 (HEAD -> main) Added presentation file
+6899906 (origin/main, origin/feature/login-system, origin/HEAD, feature/login-system) Added example file for notes
+331859e Updated Github-Studies titles
+70a1375 Added new titles and notes
+4cffaf1 Merge
+e417730 Update test1
+```
+
+Buradan ihtiyacım olan ID'yi alarak o commit'e dönebilirim.
+```bash
+$ git checkout 70a1375
+Note: switching to '70a1375'.
+```
+
+Ana koda geri dönelim ve sonrasında commitleri github'a gönderelim.
+```bash
+$ git checkout main
+Previous HEAD position was 70a1375 Added new titles and notes
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+```
+
+Son commiti silmek istersek:
+```bash
+$ git reset --soft HEAD~1
+```
+Duruma bakalım, burada gördüğümüz gibi commiti geri aldık. Bu değişiklikler geçici alanda kalır ve tekrar commit edilmeyi bekler.
+```bash
+$ git status
+On branch main
+Your branch is behind 'origin/main' by 3 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   ornek-sunum.pptx
+```
+
+Değişikliği tekrar commit edip devam edelim. Diyelim ki commit ettiğim dosyanın adını değiştirmeyi unuttum. Bunun için yeni bir commit oluşturmak yerine önceki commiti silip değişiklikleri çalışma alanına alalım. 
+```bash
+$ git reset --mixed HEAD~1
+Unstaged changes after reset:
+M       Git-Studies/git-notes.md
+M       Git-Studies/ornek-sunum.pptx
+
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   git-notes.md
+        modified:   ornek-sunum.pptx
+```
+
+Dosyanın adını düzelttikten sonra tekrar commit ediyorum. Eğer commiti tamamen silmek istersem:
+```bash
+$ git reset --hard HEAD~1
+```
+Ancak bu yöntem riskli bir yöntemdir. Çünkü geri alınamaz. Bunun yerine silmek istediğimiz commitin ID'sini kullanarak revert edebiliriz.
+```bash
+$ git log --oneline
+d28dfe6 (HEAD -> main, origin/main, origin/HEAD) Added ornek sunum
+2db7d1e Updated login system
+0a3d567 Merge
+80d4550 Added example text
+
+
+```
+Revert işlemi commiti geri almak için yeni bir commit oluşturuyor.
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+
+
+
+
+
 ---
 
