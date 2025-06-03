@@ -10,6 +10,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Uzak Depo ile Senkronizasyon](Git-Studies/git-notes.md#3-uzak-depo-ile-senkronizasyon)
 - [Branch Kullanımı](Git-Studies/git-notes.md#4-branch-kullanımı)
 - [Commit Yönetimi](Git-Studies/git-notes.md#5-commit-yönetimi)
+- [Fork ve Pull Request Süreci](Git-Studies/git-notes.md#6-fork-ve-pull-request-süreci)
 
 ### 💻 Python-Studies
 - [Python Projesi Nasıl Yapılandırılır?](Python-Studies/configurations.md#1-python-projesi-nasıl-yapılandırılır)
