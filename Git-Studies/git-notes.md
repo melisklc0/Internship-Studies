@@ -351,18 +351,31 @@ d28dfe6 (HEAD -> main, origin/main, origin/HEAD) Added ornek sunum
 
 
 ```
-Revert işlemi commiti geri almak için yeni bir commit oluşturuyor.
+Revert işlemi commiti geri almak için yeni bir commit oluşturuyor. Log'dan gerekli ID'yi alalım.
 ```bash
-
+$ git log --oneline
+5f7956b (HEAD -> main, origin/main, origin/HEAD) Added notes for title 4 and 5
+4992e32 Added presentation file again
+d28dfe6 Added ornek sunum
+2db7d1e Updated login system
 ```
 
+Revert yapalım ve sonrasında push yapalım.
 ```bash
-
+$ git revert 4992e32
+$ git push
 ```
 
+Burada gördüğümüz gibi revert işlemi için yeni bir commit eklenmiş oldu.
 ```bash
-
+$ git log --oneline
+1fcea90 (HEAD -> main) Revert: Added presentation file again
+5f7956b (origin/main, origin/HEAD) Added notes for title 4 and 5
+4992e32 Added presentation file again
 ```
+---
+
+## 6. Fork ve Pull Request Süreci
 
 ```bash
 
