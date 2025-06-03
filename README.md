@@ -5,7 +5,9 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 ## İçindekiler
 
 ### 🔧 Git-Studies
-- [Git Bash Giriş](Git-Studies/git-notes.md)
+- [Git Reposu Oluşturma ve İlk Commit](Git-Studies/git-notes.md#1-git-reposu-oluşturma-ve-ilk-commit)
+- [Dosya Takibi ve Geri Alma İşlemleri](Git-Studies/git-notes.md#2-dosya-takibi-ve-geri-alma-işlemleri)
+- [Uzak Depo ile Senkronizasyon](Git-Studies/git-notes.md#3-uzak-depo-ile-senkronizasyon)
 
 ### 💻 Python-Studies
 - [Python Projesi Nasıl Yapılandırılır?](Python-Studies/configurations.md#1-python-projesi-nasıl-yapılandırılır)
