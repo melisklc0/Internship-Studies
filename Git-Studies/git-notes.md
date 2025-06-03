@@ -1,7 +1,7 @@
-## Git Bash Giriş
+# Git Önemli Konular
 
+## 1. Git Reposu Oluşturma ve İlk Commit
 Git kullanarak bir klasörde nasıl yeni bir depo oluşturduğumu ve içerisine nasıl dosya eklediğimi adım adım anlattım.
-
 
 
 Öncelikle git bash üzerinde repo açmak istediğim klasöre geliyorum.
@@ -66,6 +66,7 @@ Date:   Fri May 30 18:06:49 2025 +0300
     dosyaları eklendi. İlk testler için örnek içeriklerle hazırlandı.
 ```
 
+## 2. Dosya Takibi ve Geri Alma İşlemleri
 Yapılan değişiklikleri de görebiliriz.
 ```bash
 $ git diff
@@ -102,8 +103,75 @@ Changes not staged for commit:
         modified:   test2.txt
 ```
 
+## 3. Uzak Depo ile Senkronizasyon
+Uzaktaki dosyaları yerel depoya çekmek için fetch kullanalım. Bu, güncellemeleri getiriyor ama henüz çalışma alanına yansıtmıyor.
 ```bash
+$ git fetch
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 1.01 KiB | 114.00 KiB/s, done.
+From https://github.com/melisklc0/Internship-Studies
+   b403b98..6a0f66e  main       -> origin/main 
 ```
 
+Aradaki farka bakalım. Bu komut ile main (yerel depomda) olmayıp, origin/main (uzaktaki depo)'da olan değişiklikleri görürüz. 
+```bash
+$ git diff main..origin/main
+diff --git a/Git-Studies/test3.txt b/Git-Studies/test3.txt
+index e69de29..1263233 100644
+--- a/Git-Studies/test3.txt
++++ b/Git-Studies/test3.txt
+@@ -0,0 +1 @@
++test3 dosyasıdır.^M
+```
+
+Bu değişiklikleri çalışma ortamına yansıtalım.
+```bash
+$ git merge
+Updating b403b98..6a0f66e
+Fast-forward
+ Git-Studies/test3.txt | 1 +   
+ 1 file changed, 1 insertion(+)
+```
+
+Diyelim ki uzak depoda güncellemeler oldu ve ben de yerelde güncelleme yaptım. Bunu push yapmaya çalıştığımda bir hata mesajı alırım:
+```bash
+$ git push
+To https://github.com/melisklc0/Internship-Studies.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/melisklc0/Internship-Studies.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
+
+Değişikleri almak için fetch + merge yapmadan direkt pull yaparsam, git kendisi bir merge işlemi başlatacaktır. Bir commit mesajı yazarak merge işlemini gerçekleştirdim.
+```bash
+Merge branch 'main' of https://github.com/melisklc0/Internship-Studies
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+.git/MERGE_MSG[RO] [unix] (17:22 02/06/2025) 
+```
+Sonrasında tekrar push ile değişiklerimi github'a gönderiyorum.
+
+
+## 4. Branch Kullanımı
 ---
 
