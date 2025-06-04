@@ -22,6 +22,11 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Python UV Kullanma](Python-Studies/configurations.md#5-python-uv-kullanma)
 - [.gitignore Dosyası](Python-Studies/configurations.md#6-gitignore-dosyası)
 
+### Prompt-Engineering
+
+- [Giriş](Prompt-Engineering/notes.md#1-giriş)
+- [Talimatlar](Prompt-Engineering/notes.md#2-talimatlar)
+
 ## Katkı ve Güncellemeler
 
 Staj süreci boyunca yeni başlıklar ve notlar eklenmeye devam edecektir. Geri bildirim ve önerilere açığım.
