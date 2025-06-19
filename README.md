@@ -24,8 +24,14 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 
 ### Prompt-Engineering
 
-- [Giriş](Prompt-Engineering/notes.md#1-giriş)
-- [Talimatlar](Prompt-Engineering/notes.md#2-talimatlar)
+- [1. Giriş](Prompt-Engineering/notes.md#1-giriş)
+- [2. Teknikler](Prompt-Engineering/notes.md#2-teknikler)  
+  - [Sıfır Örnekli İstem](Prompt-Engineering/notes.md#a-sıfır-örnekli-istem)  
+  - [Az Örnekli İstem](Prompt-Engineering/notes.md#b-az-örnekli-istem)  
+  - [Düşünce Zinciri (CoT) İstemleri](Prompt-Engineering/notes.md#c-düşünce-zinciri-cot-istemleri)  
+  - [Üretilmiş Bilgi Sistemleri](Prompt-Engineering/notes.md#d-üretilmiş-bilgi-sistemleri)  
+  - [Prompt Chaining](Prompt-Engineering/notes.md#e-prompt-chaining)  
+  - [Düşünce Ağacı (ToT)](Prompt-Engineering/notes.md#f-düşünce-ağacı-tot)
 
 ## Katkı ve Güncellemeler
 
