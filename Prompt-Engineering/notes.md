@@ -320,6 +320,7 @@ exec(llm_out.content)
 print("Doğum tarihi:", born.strftime('%m/%d/%Y'))
 ```
 
+## 9. ReAct 
 
 *İstem:*
 ```bash
