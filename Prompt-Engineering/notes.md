@@ -30,10 +30,12 @@ Yönergeleri ### gibi bir belirteçle ayırabiliriz.
 
 İyi bir formata ve açıklayıcı bir isteme sahip olmak daha önemlidir. 
 
-# 2. Talimatlar
+# 2. Teknikler
 
 ## a. Sıfır Örnekli İstem
 Herhangi bir örnek veya gösterim olmadan modelin bir yanıt vermesi için doğrudan istem yapılır.
+
+Örnek vermeden direkt prompt.
 
 *İstem:*
 ```bash
@@ -44,6 +46,17 @@ Hissiyat:
 *Çıktı:*
 ```bash
 Tarafsız
+```
+
+*İstem:*
+```bash
+Aşağıdaki metni üzgün, mutlu ya da tarafsız olarak sınıflandır.
+Metin: Yağmurdan dolayı pikniğe gidemedik.
+Hissiyat:
+```
+*Çıktı:*
+```bash
+Üzgün
 ```
 
 ## b. Az Örnekli İstem
@@ -58,6 +71,16 @@ Afrika'daki seyahatimiz sırasında bu çok şirin whatpu'ları gördük.
 *Çıktı:*
 ```bash
 Maçı kazandığımızda, hepsi sevinçle farduddle yapmaya başladık.
+```
+
+*İstem:*
+```bash
+"xmxmx" kelimesi dondurma anlamına gelir.Bu kelimenin kullanıldığı örnek bi cümle: Hava çok sıcak olduğu için xmxmx yedim.
+"xaxaxa" etmek, yavaş bir şekilde dans etmek anlamına gelir. Bu kelimenin kullanıldığı örnek bi cümle:
+```
+*Çıktı:*
+```bash
+Düğünde yaşlı çiftler müziğin ritmine uyarak xaxaxa ediyorlardı.
 ```
 
 **Önemli Noktalar**:
@@ -124,7 +147,59 @@ Hayır, golfün amacı diğerlerinden daha yüksek bir puan toplamayı denemek d
 ## e. Prompt Chaining
 Karmaşık bir görev daha basit görevlere bölünür. Bir basit görevin çıktısı diğer basit görevin istemi için kullanılarak bir zincir şeklinde devam eder.
 
+*İstem:*
+```bash
+Verilen slayt içerisindeki ana konu başlıklarını listele.
+```
+*Çıktı:*
+```bash
+1. Giriş
+2. Yapay Zeka Tarihçesi
+3. Makine Öğrenmesi Temelleri
+4. Derin Öğrenme ve Uygulamaları
+5. Gelecek Trendleri
+```
+Buradan aldığımız çıktıyı bir sonraki prompt için kullanalım:
 
+*İstem:*
+```bash
+Bu listedeki konular için birer açıklama yaz.
+```
+*Çıktı:*
+```bash
+1. Yapay zeka nedir ve neden önemlidir?
+2. Yapay zekanın tarihsel gelişim süreci nasıl olmuştur?
+3. Makine öğrenmesi nasıl çalışır?
+4. Derin öğrenmenin temel özellikleri nelerdir?
+5. Yapay zeka alanında gelecekte hangi trendler beklenmektedir?
+```
+Yine buradan aldığımız çıktıyı bir sonraki prompt için kullanalım:
+
+*İstem:*
+```bash
+Bu açıklamalara göre her konu başlığı için bir sınav sorusu oluştur.
+```
+*Çıktı:*
+```bash
+1. Yapay zeka nedir ve neden önemlidir?
+2. Yapay zekanın tarihsel gelişim süreci nasıl olmuştur?
+3. Makine öğrenmesi nasıl çalışır?
+4. Derin öğrenmenin temel özellikleri nelerdir?
+5. Yapay zeka alanında gelecekte hangi trendler beklenmektedir?
+```
+
+## f. Düşünce Ağacı (ToT)
+Problemi çözmek için adımları dallandırarak farklı düşünceler üzerinden en iyi sonuca ulaşmaya çalşıyor. 
+
+*İstem:*
+```bash
+Bu soruyu cevaplandıran üç farklı uzmanı hayal edin.
+Tüm uzmanlar düşünmelerinin 1 adımını yazar,
+sonra bunu grupla paylaşır.
+Sonra tüm uzmanlar bir sonraki adıma geçer, vb.
+Eğer herhangi bir uzman herhangi bir noktada hatalı olduğunu fark ederse, o kişi ayrılır.
+Soru şu...
+```
 
 *İstem:*
 ```bash
