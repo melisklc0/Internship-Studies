@@ -1,0 +1,13 @@
+[project]
+name = "pal-example"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    ChatOpenAI
+    python-dateutil
+    python-dotenv
+    langchain
+    langchain-community
+]
