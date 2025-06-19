@@ -24,8 +24,6 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 
 ### Prompt-Engineering
 
-### Prompt-Engineering
-
 - [Giriş](Prompt-Engineering/notes.md#giriş)
 - [Teknikler](Prompt-Engineering/notes.md#teknikler)
   - [1. Sıfır Örnekli İstem](Prompt-Engineering/notes.md#1-sıfır-örnekli-istem)
