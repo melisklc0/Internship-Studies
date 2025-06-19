@@ -246,9 +246,6 @@ Birleştirme yapabilmemiz için ana kodun güncel olması gereklidir. Eski bir v
 
 
 
-
-
-
 ## 5. Commit Yönetimi
 
 Örnek bir sunum belgesi oluşturup commitleyelim.
@@ -341,6 +338,7 @@ Dosyanın adını düzelttikten sonra tekrar commit ediyorum. Eğer commiti tama
 ```bash
 $ git reset --hard HEAD~1
 ```
+
 Ancak bu yöntem riskli bir yöntemdir. Çünkü geri alınamaz. Bunun yerine silmek istediğimiz commitin ID'sini kullanarak revert edebiliriz.
 ```bash
 $ git log --oneline
