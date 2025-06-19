@@ -341,6 +341,7 @@ Dosyanın adını düzelttikten sonra tekrar commit ediyorum. Eğer commiti tama
 ```bash
 $ git reset --hard HEAD~1
 ```
+
 Ancak bu yöntem riskli bir yöntemdir. Çünkü geri alınamaz. Bunun yerine silmek istediğimiz commitin ID'sini kullanarak revert edebiliriz.
 ```bash
 $ git log --oneline
