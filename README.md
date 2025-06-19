@@ -24,14 +24,20 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 
 ### Prompt-Engineering
 
-- [1. Giriş](Prompt-Engineering/notes.md#1-giriş)
-- [2. Teknikler](Prompt-Engineering/notes.md#2-teknikler)  
-  - [Sıfır Örnekli İstem](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#a-s%C4%B1f%C4%B1r-%C3%B6rnekli-i%CC%87stem)  
-  - [Az Örnekli İstem](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#b-az-%C3%B6rnekli-i%CC%87stem)  
-  - [Düşünce Zinciri (CoT) İstemleri](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#c-d%C3%BC%C5%9F%C3%BCnce-zinciri-cot-i%CC%87stemleri)  
-  - [Üretilmiş Bilgi Sistemleri](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#d-%C3%BCretilmi%C5%9F-bilgi-sistemleri)  
-  - [Prompt Chaining](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#e-prompt-chaining)  
-  - [Düşünce Ağacı (ToT)](https://github.com/melisklc0/Internship-Studies/blob/main/Prompt-Engineering/notes.md#f-d%C3%BC%C5%9F%C3%BCnce-a%C4%9Fac%C4%B1-tot)
+### Prompt-Engineering
+
+- [Giriş](Prompt-Engineering/notes.md#giriş)
+- [Teknikler](Prompt-Engineering/notes.md#teknikler)
+  - [1. Sıfır Örnekli İstem](Prompt-Engineering/notes.md#1-sıfır-örnekli-istem)
+  - [2. Az Örnekli İstem](Prompt-Engineering/notes.md#2-az-örnekli-istem)
+  - [3. Düşünce Zinciri (CoT) İstemleri](Prompt-Engineering/notes.md#3-düşünce-zinciri-cot-istemleri)
+  - [4. Üretilmiş Bilgi Sistemleri](Prompt-Engineering/notes.md#4-üretilmiş-bilgi-sistemleri)
+  - [5. Prompt Chaining](Prompt-Engineering/notes.md#5-prompt-chaining)
+  - [6. Düşünce Ağacı (ToT)](Prompt-Engineering/notes.md#6-düşünce-ağacı-tot)
+  - [7. LLM Yardımcı Teknikler](Prompt-Engineering/notes.md#7-llm-yardımcı-teknikler)
+  - [8. Program Destekli Dil Modelleri (PAL)](Prompt-Engineering/notes.md#8-program-destekli-dil-modelleri-pal)
+  - [9. ReAct](Prompt-Engineering/notes.md#9-react)
+
 
 ## Katkı ve Güncellemeler
 
