@@ -1,14 +1,14 @@
 # Prompt Engineering Guide
 
-## 1. Giriş
+# Giriş
 
-### a. LLM Ayarları
+### LLM Ayarları
 ---
 **Temperature**: Rastlantısallığı arttırır. Yaratıcılık gerektiren şeylerde yüksek sıcaklık, daha somut şeylerde düşük sıcaklık tercih edilir.
 
 **Top_p**: Belirleyiciliği kontrol eder. Kesin ve gerçek yanıtlar için düşük, daha çeşitli yanıtlar için yüksek tutulur.
 
-### b. İstem Unsurları
+### İstem Unsurları
 ---
 **Talimat** - modelin gerçekleştirmesini istediğiniz belirli bir görev veya talimat
 
@@ -18,7 +18,7 @@
 
 **Çıktı Göstergesi** - çıktının türü veya formatı.
 
-### c. Genel İpuçları
+### Genel İpuçları
 ---
 Belirginlik, basitlik ve özlülük genellikle daha iyi sonuçlar verir.
 
@@ -30,9 +30,9 @@ Yönergeleri ### gibi bir belirteçle ayırabiliriz.
 
 İyi bir formata ve açıklayıcı bir isteme sahip olmak daha önemlidir. 
 
-# 2. Teknikler
+# Teknikler
 
-## a. Sıfır Örnekli İstem
+## 1. Sıfır Örnekli İstem
 Herhangi bir örnek veya gösterim olmadan modelin bir yanıt vermesi için doğrudan istem yapılır.
 
 Örnek vermeden direkt prompt.
@@ -59,7 +59,7 @@ Hissiyat:
 Üzgün
 ```
 
-## b. Az Örnekli İstem
+## 2. Az Örnekli İstem
 Görevleri bağlam içinde öğrenme yeteneği vardır. Daha iyi performans için modele yol gösterir.
 
 *İstem:*
@@ -91,7 +91,7 @@ Etiketlerin formatı önemlidir.
 
 Rastgele ve tutarlı olmayan etiketler versek bile gerçek etiket dağılımına benzemeleri modelin öğrenmesine yardımcı olur.
 
-## c. Düşünce Zinciri (CoT) İstemleri
+## 3. Düşünce Zinciri (CoT) İstemleri
 Sorunun çözümüne yönelik örneği akıl yürütme yöntemleriyle beraber verdiğimizde model de bu şekilde çözüyor.
 
 *İstem:*
@@ -130,7 +130,7 @@ Auto-CoT iki ana aşamadan oluşur:
 **Aşama 2):** gösterim örneklendirmesi: her kümeden temsili bir soru seçer ve Zero-Shot-CoT ile basit sezgilere dayanarak akıl yürütme zinciri oluşturur
 
 
-## d. Üretilmiş Bilgi Sistemleri
+## 4. Üretilmiş Bilgi Sistemleri
 Modelin sadece bilgi kullanmasını değil, aynı zamanda önce bilgi üretip sonra tahmin yapmasını öneriyor. Yani modelin doğrudan cevaba atlamadan önce düşünmesini sağlıyor. Bu yöntem, özellikle ortak bilgi ve mantık gerektiren görevlerde kullanılıyor.
 
 *İstem:*
@@ -144,7 +144,7 @@ Açıklama ve Yanıt:
 Hayır, golfün amacı diğerlerinden daha yüksek bir puan toplamayı denemek değildir. Asıl amaç, bir set deliği en az sayıda vuruşla oynamaktır. Oyunun galibi, toplam vuruş sayısına, total puan sayısına göre belirlenir.
 ```
 
-## e. Prompt Chaining
+## 5. Prompt Chaining
 Karmaşık bir görev daha basit görevlere bölünür. Bir basit görevin çıktısı diğer basit görevin istemi için kullanılarak bir zincir şeklinde devam eder.
 
 *İstem:*
@@ -188,18 +188,72 @@ Bu açıklamalara göre her konu başlığı için bir sınav sorusu oluştur.
 5. Yapay zeka alanında gelecekte hangi trendler beklenmektedir?
 ```
 
-## f. Düşünce Ağacı (ToT)
+## 6. Düşünce Ağacı (ToT)
 Problemi çözmek için adımları dallandırarak farklı düşünceler üzerinden en iyi sonuca ulaşmaya çalşıyor. 
 
 *İstem:*
 ```bash
-Bu soruyu cevaplandıran üç farklı uzmanı hayal edin.
-Tüm uzmanlar düşünmelerinin 1 adımını yazar,
-sonra bunu grupla paylaşır.
-Sonra tüm uzmanlar bir sonraki adıma geçer, vb.
-Eğer herhangi bir uzman herhangi bir noktada hatalı olduğunu fark ederse, o kişi ayrılır.
-Soru şu...
+Aşağıdaki problemi çözmek için üç farklı düşünce yolu oluştur.
+Her düşünce yolu çözüm için farklı bir yaklaşım önersin.
+Her adımı açıkla. En sonunda en mantıklı yolu seç ve sonucu belirt.
+
+Soru: Bir tren saatte 60 km hızla 3 saat boyunca yol alıyor. Toplam kaç kilometre gitmiştir?
 ```
+
+*İstem:*
+```bash
+Bu soruyu çözmek için üç farklı uzman düşünce yolunu yazacak.
+Her uzman adım adım ilerleyecek.
+Her adımda eğer hatalı olduğunu fark eden uzman süreci bırakacak.
+En sonunda kalan uzmanlar doğru sonuca ulaşacak.
+
+Soru: Eğer tüm A’lar B ise, ve tüm B’ler C ise, tüm A’lar C midir?
+```
+Tarzında promptlar yazılabilir.
+
+## 7. LLM Yardımcı Teknikler
+### Veri Alımı Artırılmış Üretim (RAG)
+RAG yöntemi, dil modellerine Wikipedia gibi harici kaynaklardan bilgi getirerek bağlam sağlar, böylece modeli yeniden eğitmeye gerek kalmadan güncel ve güvenilir çıktılar üretir. 
+
+Halüsinasyon sorununu hafifletmeye yardımcı olur. Halüsinasyon sorunu, yapay zeka modellerinin gerçekte olmayan veya yanlış bilgiler uydurmasıdır.
+
+### Otomatik Akıl Yürütme ve Araç Kullanımı (ART)
+ART, dil modelinin yeni bir görevi çözerken örneklerden öğrenmesini ve gerektiğinde hesap makinesi gibi dış araçları kullanmasını sağlar. Araç kullanırken durur, sonucu alır ve sonra devam eder. Ayrıca kolayca yeni araçlar ekleyebilir ya da hataları düzeltebiliriz.
+
+### Otomatik İstem Mühendisi (APE)
+APE, yapay zekanın kendi başına daha iyi talimatlar (promptlar) yazmasını sağlayan bir sistemdir.
+
+Önce yapay zekaya bazı örnekler veriliyor, o da bunlara bakarak farklı görevleri nasıl çözebileceğini anlatan talimatlar üretiyor. Sonra bu talimatlar deneniyor ve en iyi sonuç veren seçiliyor.
+
+Bu sistem, insanların yazdığı "Adım adım düşünelim" gibi klasik ifadelerden daha başarılı talimatlar bulabiliyor. Mesela “Doğru cevabı bulduğumuzdan emin olmak için bunu adım adım çözelim” gibi bir cümle, zor matematik sorularında yapay zekanın daha iyi düşünmesine yardımcı oluyor.
+
+## 8. Program Destekli Dil Modelleri (PAL)
+Bu yöntem, çözümü Python yorumlayıcısı gibi programlamaya dayalı bir çalışma zamanına devreder.
+
+LangChain ve OpenAI GPT-3 kullanarak, Python yorumlayıcısı ile tarihsel soruları anlayıp yanıtlayabilen basit bir uygulama geliştirelim. Amaç, LLM’nin tarih içeren soruları analiz edip doğru cevabı üretmesini sağlamaktır.
+
+Gerekli importları yapalım.
+```bash
+import openai
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import os
+from langchain.llms import OpenAI
+from dotenv import load_dotenv
+```
+
+
+
+*İstem:*
+```bash
+
+```
+*Çıktı:*
+```bash
+
+```
+
+
 
 *İstem:*
 ```bash
