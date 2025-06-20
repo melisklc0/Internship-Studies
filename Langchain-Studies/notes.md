@@ -1,5 +1,5 @@
 # Langchain
-Bu notlar *langchain-crash-course* projesi üzerinden konu çalışırken almış olduğum notlar.
+Bu notlar *langchain-crash-course projesi üzerinden konu çalışırken almış olduğum notlar.
 
 ## 1. Chat Modelleri
 Öncelikle bazı kavramlara bakalım:
