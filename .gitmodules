@@ -1,0 +1,3 @@
+[submodule "Langchain-Studies/langchain-crash-course"]
+	path = Langchain-Studies/langchain-crash-course
+	url = https://github.com/bhancockio/langchain-crash-course.git
