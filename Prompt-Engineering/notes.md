@@ -105,6 +105,7 @@ A:
 ```bash
 Tüm tek sayıları (15, 5, 13, 7, 1) topladığımızda 41 bulunur. Cevap Yanlıştır.
 ```
+----
 ### Sıfır Örnek CoT İstemi
 Hiç örnek vermeden direkt akıl yürütme ile soruyu çözdürmeye çalışıyoruz.
 
@@ -120,7 +121,7 @@ Adım adım düşünelim.
 Sonra 5 tane daha elma aldınız, yani şimdi 11 tane elmanız oldu.
 Son olarak, 1 elma yediniz, bu durumda 10 elmanız kaldı.
 ```
-
+----
 ### Otomatik Düşünceler Zinciri (Auto-CoT)
 Adım adım düşünelim tekniğini geliştirmeyi amaçlıyor. 
 
@@ -217,8 +218,12 @@ RAG yöntemi, dil modellerine Wikipedia gibi harici kaynaklardan bilgi getirerek
 
 Halüsinasyon sorununu hafifletmeye yardımcı olur. Halüsinasyon sorunu, yapay zeka modellerinin gerçekte olmayan veya yanlış bilgiler uydurmasıdır.
 
+----
+
 ### Otomatik Akıl Yürütme ve Araç Kullanımı (ART)
 ART, dil modelinin yeni bir görevi çözerken örneklerden öğrenmesini ve gerektiğinde hesap makinesi gibi dış araçları kullanmasını sağlar. Araç kullanırken durur, sonucu alır ve sonra devam eder. Ayrıca kolayca yeni araçlar ekleyebilir ya da hataları düzeltebiliriz.
+
+----
 
 ### Otomatik İstem Mühendisi (APE)
 APE, yapay zekanın kendi başına daha iyi talimatlar (promptlar) yazmasını sağlayan bir sistemdir.
