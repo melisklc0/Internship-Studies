@@ -4,7 +4,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 
 ## İçindekiler
 
-### Git-Studies
+### Git
 
 - [Git Reposu Oluşturma ve İlk Commit](Git-Studies/git-notes.md#1-git-reposu-oluşturma-ve-ilk-commit)
 - [Dosya Takibi ve Geri Alma İşlemleri](Git-Studies/git-notes.md#2-dosya-takibi-ve-geri-alma-işlemleri)
@@ -13,7 +13,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Commit Yönetimi](Git-Studies/git-notes.md#5-commit-yönetimi)
 - [Fork ve Pull Request Süreci](Git-Studies/git-notes.md#6-fork-ve-pull-request-süreci)
 
-### Python-Studies
+### Python
 
 - [Python Projesi Nasıl Yapılandırılır?](Python-Studies/configurations.md#1-python-projesi-nasıl-yapılandırılır)
 - [Virtual Environment](Python-Studies/configurations.md#2-virtual-environment-venv)
@@ -35,6 +35,11 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
   - [7. LLM Yardımcı Teknikler](Prompt-Engineering/notes.md#7-llm-yardımcı-teknikler)
   - [8. Program Destekli Dil Modelleri (PAL)](Prompt-Engineering/notes.md#8-program-destekli-dil-modelleri-pal)
   - [9. ReAct](Prompt-Engineering/notes.md#9-react)
+
+### Langchain
+- [Chat Modelleri](Langchain-Studies/notes.md#1-chat-modelleri)
+- [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
+- [Zincirler](Langchain-Studies/notes.md#3-zincirler)
 
 
 ## Katkı ve Güncellemeler
