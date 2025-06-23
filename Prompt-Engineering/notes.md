@@ -328,11 +328,116 @@ print("Doğum tarihi:", born.strftime('%m/%d/%Y'))
 ## 9. ReAct 
 ReAct yapısı modelin dış kaynaklarla iletişime geçerek bilgi toplamasını sağlar. 
 
-*İstem:*
+Langchainde bir örnek yapalım:
 ```bash
+import os
+from dotenv import load_dotenv
+from langchain.chat_models import ChatOpenAI
+from langchain.agents import initialize_agent, load_tools
 
+load_dotenv()
 ```
-*Çıktı:*
+Modeli ve zero-shot ajanı başlatalım:
 ```bash
+llm = ChatOpenAI(model="gpt-4", temperature=0)
+tools = load_tools(["google-serper", "llm-math"], llm=llm)
 
+agent = initialize_agent(
+    tools,
+    llm,
+    agent="zero-shot-react-description",
+    verbose=True
+)
 ```
+Sonucu alalım:
+```bash
+response = agent.run("Olivia Wilde'ın erkek arkadaşı kim? Şu anki yaşının 0,23 üssü kaç?")
+print(response)
+```
+Bu tarz bir çıktı düşünce zinciri elde ederiz:
+```bash
+> Entering new AgentExecutor chain...
+
+Thought: Bu soru iki parçadan oluşuyor. Önce Olivia Wilde'ın şu anki erkek arkadaşını öğrenmem gerekiyor.
+Action: google-serper
+Action Input: "Olivia Wilde current boyfriend 2025"
+
+Observation: Olivia Wilde was last publicly linked to Harry Styles, but they reportedly broke up in late 2022. As of now, there are no confirmed reports about a new relationship.
+Thought: Şu anda bir erkek arkadaşı yok gibi görünüyor. Şimdi yaşını bulup 0.23 üssünü hesaplayacağım.
+Action: google-serper
+Action Input: "Olivia Wilde age"
+
+Observation: Olivia Wilde is 40 years old (born March 10, 1984).
+Thought: Yaşı 40. Şimdi 40^0.23 hesabını yapmalıyım.
+Action: calculator
+Action Input: 40^0.23
+
+Observation: Answer: 2.324
+Final Answer: Olivia Wilde'ın şu an bilinen bir erkek arkadaşı yok. Son ilişkisi Harry Styles ileydi ve 2022'de sona erdi. Şu anki yaşı yaklaşık 40 ve bu yaşın 0.23 üssü ≈ 2.324.
+```
+Son çıktı şu şekilde oldu:
+```bash
+Olivia Wilde'ın şu an bilinen bir erkek arkadaşı yok. Son ilişkisi Harry Styles ileydi ve 2022'de sona erdi. Şu anki yaşı yaklaşık 40 ve bu yaşın 0.23 üssü ≈ 2.324.
+```
+
+## 10. Reflection
+
+Reflection, dil tabanlı ajanların kendi hatalarından dilsel geri bildirim ile öğrenmesini sağlayan bir tekniktir.
+
+Ajan bir görevde işlem yapar, sonucu değerlendirir, kendine sözel bir geri bildirim üretir ve bu geri bildirimi hafızasına kaydeder. Sonraki görevde bu bilgiyi kullanır.
+
+Böylece ajan önceki hatalardan ders alır. Deneme yanılma yöntemine dayalı görevlerde başarıyı artırır.
+
+## 11. Çok Modlu CoT
+
+İki aşamalı bir süreçtir. İlk aşamada, görsel ve metin gibi farklı modalitelerden gelen bilgiler kullanılarak mantıklı ve sağlam dayanaklar oluşturulur. İkinci aşamada da, bu dayanaklar temel alınarak doğru ve tutarlı yanıtlar üretilir. Böylece çok modlu bilgiler etkili şekilde değerlendirilerek daha güvenilir ve açıklanabilir sonuçlar elde edilir.
+
+# Uygulamalar
+
+## Veri Üretimi
+LLM’ler, tutarlı ve anlamlı metinler üretme konusunda oldukça güçlüdür. Doğru istem stratejileri kullanıldığında, modeller daha kaliteli, tutarlı ve gerçekçi yanıtlar verebilir. Ayrıca, LLM’ler çeşitli deneyler ve değerlendirmeler için gerekli olan faydalı verileri oluşturmakta da son derece etkilidir.
+
+## Kod Üretimi
+
+LLM'leri kod üretmek, temel MySQL sorgularını oluşturma ve test etme gibi programlamanın diğer yönlerinde kullanılabilecek kullanışlı kod oluşturmak için de kullanabiliriz.
+```bash
+Bir junior geliştiriciye nasıl kod yazılacağını öğretebilen yardımcı bir kod asistanısınız. Tercih ettiğiniz dil Python. Kodu açıklamayın, sadece kod bloğunu üretin.
+```
+
+## İstem Fonksiyonu
+
+GPT ile etkileşimde, istemleri fonksiyonlar gibidir. Her fonksiyonun benzersiz bir adı vardır ve girdilerle çağrıldığında belirli kurallara göre çıktı üretir. Böylece, tekrar kullanılabilir ve kolay yönetilebilir istemler oluşturulur. Fonksiyonları kullanmadan önce GPT’ye bu fonksiyonlar hakkında bilgi vermemiz gerekiyor.
+
+```bash
+Merhaba, ChatGPT! Umarım iyisindir. Belirli bir fonksiyonla ilgili yardım için sana başvuruyorum. Bilgiyi işleme ve verilen talimatlara göre çeşitli görevleri yerine getirme yeteneğine sahip olduğunu anlıyorum. İsteğimi daha kolay anlamana yardımcı olmak için fonksiyonu, girdiyi ve girişle ne yapılacağına dair talimatları tanımlamak için bir şablon kullanacağım. Lütfen ayrıntıları aşağıda bulun:
+fonksiyon_adı: [Fonksiyon Adı]
+girdi: [Giriş]
+kurallar: [Girişin nasıl işleneceğine dair talimatlar]
+Bu fonksiyon için çıktıyı, sağladığım detaylara dayanarak sağlamanı rica ederim. Yardımın çok takdir edilmektedir. Teşekkür ederim!
+Parantez içindeki metni, gerçekleştirmenizi istediğim fonksiyon için ilgili bilgilerle değiştireceğim. Bu detaylı giriş, isteğimi daha verimli bir şekilde anlamanıza ve istenen çıktıyı sağlamanıza yardımcı olmalıdır. Format şu şekildedir: fonksiyon_adı(giriş) Eğer anladıysan, sadece bir kelime ile tamam yanıtını ver.
+```
+
+## Fonksyion Çağırma
+
+GPT-4 ve GPT-3.5 gibi büyük dil modelleri, doğal dil girdilerinden fonksiyon çağrılması gerektiğini tespit edip JSON formatında argümanlar üretecek şekilde ince ayarlanmıştır. Fonksiyon çağrısı, LLM destekli sohbet botları veya ajanların dış araçlarla etkileşim kurmasını ve API çağrıları yapmasını sağlar. 
+
+Bu yetenek,
+ - hava durumu sorgulama gibi basit taleplerden,
+ - karmaşık veri çıkarımı, 
+ - isim tanıma, 
+ - duygu analizi, 
+ - matematik problemlerinin çözümü, 
+ - API entegrasyonu ve 
+ - bilgi çıkarımı
+ 
+ gibi pek çok kullanım alanına sahiptir. Böylece geliştiriciler, doğal dili yapılandırılmış komutlara dönüştürerek daha etkili ve fonksiyonel uygulamalar oluşturabilir.
+
+## Context Caching
+
+Context caching, modelin daha önce aldığı bilgileri kısa süreli hafızasında tutarak tekrar tekrar göndermeye gerek kalmadan hızlı ve verimli yanıtlar üretmesini sağlayan bir yöntemdir.
+
+Bu süreçte önce özetlerin bulunduğu dosya düz metne çevrilir ve Gemini API kullanılarak yüklenir. Daha sonra model için bir önbellek (cache) oluşturulur; böylece model, önceki bilgileri hafızasında tutar ve her sorguda tüm dosyayı tekrar göndermek zorunda kalmaz. Bu sayede model, doğal dilde sorulan sorulara hızlı ve doğru yanıtlar verir, araştırmacılar da büyük veri setlerinden istedikleri bilgileri kolayca çıkarabilirler.
+
+## Generating Textbook
+
+Büyük dil modelleri kullanılarak, çocuk hikayeleri ve ders kitabı metinleri gibi farklı içeriklerde yüksek çeşitlilikte sentetik veri üretiliyor. Rastgele seçilen kelimeler ve özelliklerle oluşturulan hikayeler sayesinde veri setinin çeşitliliği artırılıyor. Bu sentetik veriler, yerel modellerin eğitilmesinde kullanılıyor ve küçük modellerin büyük modellere yakın performans göstermesi sağlanıyor. Ayrıca, sentetik veri üretiminde hedef kitleye yönelik içerik oluşturmak ve adım adım karmaşık görevler için ara çıktılar kullanmak gibi teknikler kullanılıyor. Sonuç olarak, sentetik veri üretimi sayesinde kaliteli ve çeşitli eğitim setleri oluşturulabiliyor.
