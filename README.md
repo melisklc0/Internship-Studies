@@ -35,6 +35,9 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
   - [7. LLM Yardımcı Teknikler](Prompt-Engineering/notes.md#7-llm-yardımcı-teknikler)
   - [8. Program Destekli Dil Modelleri (PAL)](Prompt-Engineering/notes.md#8-program-destekli-dil-modelleri-pal)
   - [9. ReAct](Prompt-Engineering/notes.md#9-react)
+  - [10. Reflection](Prompt-Engineering/notes.md#10-reflection)
+  - [11. Çok Modlu CoT](Prompt-Engineering/notes.md#11-çok-modlu-cot)
+- [Uygulamalar](Prompt-Engineering/notes.md#uygulamalar)
 
 ### Langchain
 - [Chat Modelleri](Langchain-Studies/notes.md#1-chat-modelleri)
