@@ -380,17 +380,11 @@ Son çıktı şu şekilde oldu:
 Olivia Wilde'ın şu an bilinen bir erkek arkadaşı yok. Son ilişkisi Harry Styles ileydi ve 2022'de sona erdi. Şu anki yaşı yaklaşık 40 ve bu yaşın 0.23 üssü ≈ 2.324.
 ```
 
-## 10. Reflection
+## 10. Reflection ve Çok Modlu CoT
 
-Reflection, dil tabanlı ajanların kendi hatalarından dilsel geri bildirim ile öğrenmesini sağlayan bir tekniktir.
+**Reflection**, dil tabanlı ajanların kendi hatalarından dilsel geri bildirim ile öğrenmesini sağlayan bir tekniktir. Ajan bir görevde işlem yapar, sonucu değerlendirir, kendine sözel bir geri bildirim üretir ve bu geri bildirimi hafızasına kaydeder. Sonraki görevde bu bilgiyi kullanır. Böylece ajan önceki hatalardan ders alır. Deneme yanılma yöntemine dayalı görevlerde başarıyı artırır.
 
-Ajan bir görevde işlem yapar, sonucu değerlendirir, kendine sözel bir geri bildirim üretir ve bu geri bildirimi hafızasına kaydeder. Sonraki görevde bu bilgiyi kullanır.
-
-Böylece ajan önceki hatalardan ders alır. Deneme yanılma yöntemine dayalı görevlerde başarıyı artırır.
-
-## 11. Çok Modlu CoT
-
-İki aşamalı bir süreçtir. İlk aşamada, görsel ve metin gibi farklı modalitelerden gelen bilgiler kullanılarak mantıklı ve sağlam dayanaklar oluşturulur. İkinci aşamada da, bu dayanaklar temel alınarak doğru ve tutarlı yanıtlar üretilir. Böylece çok modlu bilgiler etkili şekilde değerlendirilerek daha güvenilir ve açıklanabilir sonuçlar elde edilir.
+**Çok Modlu CoT**, iki aşamalı bir süreçtir. İlk aşamada, görsel ve metin gibi farklı modalitelerden gelen bilgiler kullanılarak mantıklı ve sağlam dayanaklar oluşturulur. İkinci aşamada da, bu dayanaklar temel alınarak doğru ve tutarlı yanıtlar üretilir. Böylece çok modlu bilgiler etkili şekilde değerlendirilerek daha güvenilir ve açıklanabilir sonuçlar elde edilir.
 
 # Uygulamalar
 
