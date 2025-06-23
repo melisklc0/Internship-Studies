@@ -326,6 +326,7 @@ print("Doğum tarihi:", born.strftime('%m/%d/%Y'))
 ```
 
 ## 9. ReAct 
+ReAct yapısı modelin dış kaynaklarla iletişime geçerek bilgi toplamasını sağlar. 
 
 *İstem:*
 ```bash

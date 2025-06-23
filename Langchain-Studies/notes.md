@@ -1,5 +1,5 @@
 # Langchain
-Bu notlar *langchain-crash-course projesi üzerinden konu çalışırken almış olduğum notlar.
+Bu notlar *langchain-crash-course* projesi üzerinden konu çalışırken almış olduğum notlar.
 
 ## 1. Chat Modelleri
 Öncelikle bazı kavramlara bakalım:
@@ -251,19 +251,102 @@ print(result.content)
 
 -----
 ## 3. Zincirler
+Promptu modele zincirliyoruz, böylece model kendi içinde farklı görevleri invoke yapıyor. Teker teker invoke yapmamıza gerek kalmıyor.
 
+### Basic – Temel Zincir
+En sade LCEL zinciridir. Prompt alır, modele gönderir, yanıtı döner. Tek adımda fikir üretmek, metni analiz etmek gibi basit işler için idealdir.
+
+```bash
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
+
+model = ChatOpenAI(model="gpt-4o")
+prompt = ChatPromptTemplate.from_template("Bir {hayvan} ismi öner.")
+chain = prompt | model 
+
+print(chain.invoke({"hayvan": "kaplumbağa"}).content)
+```
+
+StrOutputParser() fonksiyonu, doğrudan content i almamızı sağlar. Bunu şu şekilde kullanabiliriz, bu şekilde print yaparken tekrardan content i almamız gerekmez.
+
+```bash
+chain = prompt | model | StrOutputParser()
+
+print(chain.invoke({"hayvan": "kaplumbağa"}))
+```
+
+### Under the Hood – Detaylı Akış
+Zincirin nasıl çalıştığını daha iyi anlamak için çıktıyı parçalayarak adım adım işler. *invoke()* yerine doğrudan *PromptValue* ve model çağrısı kullanılır.
+
+```bash
+prompt = ChatPromptTemplate.from_template("Kısa bir fıkra yaz: {konu}")
+model = ChatOpenAI(model="gpt-4o")
+
+formatted_prompt = prompt.invoke({"konu": "doktor"})
+
+response = model.invoke(formatted_prompt)
+print(response.content)
+```
+
+### Extended – Zincire Ek Adım Eklemek
+Modelden gelen yanıtı işleyip başka prompt'a gönderir. Örneğin: fikir üret → açıklamasını yaz → başlık öner.
+
+```bash
+from langchain_core.prompts import ChatPromptTemplate
+
+model = ChatOpenAI(model="gpt-4o")
+
+chain1 = ChatPromptTemplate.from_template("Yaratıcı bir {kategori} fikri öner.") | model
+chain2 = ChatPromptTemplate.from_template("{input} için kısa açıklama yaz.") | model
+
+extended_chain = chain1 | (lambda out: {"input": out.content}) | chain2
+print(extended_chain.invoke({"kategori": "mobil uygulama"}).content)
+```
+
+### Parallel – Paralel Zincirler
+Aynı girdiyi farklı zincirlere paralel olarak gönderip çoklu çıktı almak için kullanılır. Örneğin: aynı metni hem özetle hem İngilizce'ye çevir.
+
+```bash
+from langchain_core.runnables import RunnableParallel
+
+model = ChatOpenAI(model="gpt-4o")
+
+summary = ChatPromptTemplate.from_template("Metni özetle: {metin}") | model
+translate = ChatPromptTemplate.from_template("Metni İngilizceye çevir: {metin}") | model
+
+parallel_chain = RunnableParallel(ozet=summary, ceviri=translate)
+result = parallel_chain.invoke({"metin": "Yapay zeka hızla gelişiyor."})
+
+print("Özet:", result["ozet"].content)
+print("Çeviri:", result["ceviri"].content)
+
+```
+
+### Branching – Şarta Göre Yönlendirme (Router)
+Kullanıcının amacına göre farklı zincirlere yönlendirir. Koşullu dallanma yapıyor. Örneğin: "özetle" derse özet zinciri, "çevir" derse çeviri zinciri çalışır.
+
+```bash
+model = ChatOpenAI(model="gpt-4o")
+ozet_zinciri = ChatPromptTemplate.from_template("Özetle: {metin}") | model
+ceviri_zinciri = ChatPromptTemplate.from_template("İngilizceye çevir: {metin}") | model
+
+def router(input):
+    if input["görev"] == "özet":
+        return ozet_zinciri.invoke({"metin": input["metin"]})
+    elif input["görev"] == "çeviri":
+        return ceviri_zinciri.invoke({"metin": input["metin"]})
+    else:
+        return "Geçersiz görev"
+
+output = router({"görev": "çeviri", "metin": "LangChain çok güçlü bir araçtır."})
+print(output.content)
+```
 
 
 ```bash
 
 ```
 
-```bash
 
-```
-
-```bash
-
-```
 
 
