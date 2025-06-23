@@ -417,7 +417,7 @@ Bu fonksiyon için çıktıyı, sağladığım detaylara dayanarak sağlamanı r
 Parantez içindeki metni, gerçekleştirmenizi istediğim fonksiyon için ilgili bilgilerle değiştireceğim. Bu detaylı giriş, isteğimi daha verimli bir şekilde anlamanıza ve istenen çıktıyı sağlamanıza yardımcı olmalıdır. Format şu şekildedir: fonksiyon_adı(giriş) Eğer anladıysan, sadece bir kelime ile tamam yanıtını ver.
 ```
 
-## Fonksyion Çağırma
+## Fonksiyon Çağırma
 
 GPT-4 ve GPT-3.5 gibi büyük dil modelleri, doğal dil girdilerinden fonksiyon çağrılması gerektiğini tespit edip JSON formatında argümanlar üretecek şekilde ince ayarlanmıştır. Fonksiyon çağrısı, LLM destekli sohbet botları veya ajanların dış araçlarla etkileşim kurmasını ve API çağrıları yapmasını sağlar. 
 
