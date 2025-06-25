@@ -42,6 +42,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Chat Modelleri](Langchain-Studies/notes.md#1-chat-modelleri)
 - [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
 - [Zincirler](Langchain-Studies/notes.md#3-zincirler)
+- [RAG](Langchain-Studies/notes.md#4-rag)
 
 
 ## Katkı ve Güncellemeler
