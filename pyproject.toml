@@ -9,4 +9,5 @@ dependencies = []
 [tool.uv.workspace]
 members = [
     "Prompt-Engineering/PAL-example",
+    "Langchain-Studies/asistan-projesi",
 ]

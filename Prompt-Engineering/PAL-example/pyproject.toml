@@ -5,9 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    ChatOpenAI
-    python-dateutil
-    python-dotenv
-    langchain
-    langchain-community
+    "openai",
+    "python-dateutil",
+    "python-dotenv",
+    "langchain",
+    "langchain-community"
 ]
