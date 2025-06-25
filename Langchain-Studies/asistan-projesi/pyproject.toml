@@ -12,5 +12,7 @@ dependencies = [
     "python-dotenv",
     "langchain-google-genai",
     "google-generativeai",
-    "langchain-openai"
+    "langchain-openai",
+    "sentence-transformers",
+    "langchain_community"
 ]
