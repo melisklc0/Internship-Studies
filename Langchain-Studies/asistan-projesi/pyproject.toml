@@ -1,0 +1,16 @@
+[project]
+name = "asistan-projesi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "openai",
+    "langchain",
+    "chromadb",
+    "tiktoken",
+    "python-dotenv",
+    "langchain-google-genai",
+    "google-generativeai",
+    "langchain-openai"
+]
