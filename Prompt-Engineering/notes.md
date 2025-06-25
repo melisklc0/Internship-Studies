@@ -32,8 +32,8 @@ Yönergeleri ### gibi bir belirteçle ayırabiliriz.
 
 # Teknikler
 
-## 1. Sıfır Örnekli İstem
-Herhangi bir örnek veya gösterim olmadan modelin bir yanıt vermesi için doğrudan istem yapılır.
+## 1. Zero-Shot Prompting
+**Sıfır Örnekli İstem:** Herhangi bir örnek veya gösterim olmadan modelin bir yanıt vermesi için doğrudan istem yapılır.
 
 Örnek vermeden direkt prompt.
 
@@ -59,8 +59,8 @@ Hissiyat:
 Üzgün
 ```
 
-## 2. Az Örnekli İstem
-Görevleri bağlam içinde öğrenme yeteneği vardır. Daha iyi performans için modele yol gösterir.
+## 2. Few-Shot Prompting
+**Az Örnekli İstem:** Görevleri bağlam içinde öğrenme yeteneği vardır. Daha iyi performans için modele yol gösterir.
 
 *İstem:*
 ```bash
@@ -92,7 +92,7 @@ Etiketlerin formatı önemlidir.
 Rastgele ve tutarlı olmayan etiketler versek bile gerçek etiket dağılımına benzemeleri modelin öğrenmesine yardımcı olur.
 
 ## 3. Düşünce Zinciri (CoT) İstemleri
-Sorunun çözümüne yönelik örneği akıl yürütme yöntemleriyle beraber verdiğimizde model de bu şekilde çözüyor.
+**Chain of thoughts (Cot):** Sorunun çözümüne yönelik örneği akıl yürütme yöntemleriyle beraber verdiğimizde model de bu şekilde çözüyor.
 
 *İstem:*
 ```bash

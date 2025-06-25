@@ -257,73 +257,161 @@ Promptu modele zincirliyoruz, böylece model kendi içinde farklı görevleri in
 En sade LCEL zinciridir. Prompt alır, modele gönderir, yanıtı döner. Tek adımda fikir üretmek, metni analiz etmek gibi basit işler için idealdir.
 
 ```bash
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-
 model = ChatOpenAI(model="gpt-4o")
-prompt = ChatPromptTemplate.from_template("Bir {hayvan} ismi öner.")
-chain = prompt | model 
 
-print(chain.invoke({"hayvan": "kaplumbağa"}).content)
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are a comedian who tells jokes about {topic}."),
+        ("human", "Tell me {joke_count} jokes."),
+    ]
+)
+
+chain = prompt_template | model | StrOutputParser()
+# chain = prompt_template | model
+
+result = chain.invoke({"topic": "lawyers", "joke_count": 3})
+print(result)
 ```
 
 StrOutputParser() fonksiyonu, doğrudan content i almamızı sağlar. Bunu şu şekilde kullanabiliriz, bu şekilde print yaparken tekrardan content i almamız gerekmez.
 
-```bash
-chain = prompt | model | StrOutputParser()
-
-print(chain.invoke({"hayvan": "kaplumbağa"}))
-```
-
 ### Under the Hood – Detaylı Akış
 Zincirin nasıl çalıştığını daha iyi anlamak için çıktıyı parçalayarak adım adım işler. *invoke()* yerine doğrudan *PromptValue* ve model çağrısı kullanılır.
+Burada first ve last birer runnable iken middle bir listedir.
 
 ```bash
-prompt = ChatPromptTemplate.from_template("Kısa bir fıkra yaz: {konu}")
-model = ChatOpenAI(model="gpt-4o")
+model = ChatOpenAI(model="gpt-4")
 
-formatted_prompt = prompt.invoke({"konu": "doktor"})
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are a comedian who tells jokes about {topic}."),
+        ("human", "Tell me {joke_count} jokes."),
+    ]
+)
 
-response = model.invoke(formatted_prompt)
-print(response.content)
+# Zincirin adımları, ayrı ayrı runnable'lar.
+format_prompt = RunnableLambda(lambda x: prompt_template.format_prompt(**x))
+invoke_model = RunnableLambda(lambda x: model.invoke(x.to_messages()))
+parse_output = RunnableLambda(lambda x: x.content)
+
+# Bu kısım LCEL ile yazılan kısımla aynı işi yapar.
+chain = RunnableSequence(first=format_prompt, middle=[invoke_model], last=parse_output)
+
+response = chain.invoke({"topic": "lawyers", "joke_count": 3})
+print(response)
+```
+Buradaki runnable komutları LCEL ile yazacak olursak çok daha kısa bir şekilde çalıştırabiliriz:
+
+```bash
+chain = prompt_template | model | StrOutputParser()
 ```
 
 ### Extended – Zincire Ek Adım Eklemek
 Modelden gelen yanıtı işleyip başka prompt'a gönderir. Örneğin: fikir üret → açıklamasını yaz → başlık öner.
+Zinciri genişletmek istediğimizde bunu runnable ile yaparız. 
 
 ```bash
-from langchain_core.prompts import ChatPromptTemplate
-
 model = ChatOpenAI(model="gpt-4o")
 
-chain1 = ChatPromptTemplate.from_template("Yaratıcı bir {kategori} fikri öner.") | model
-chain2 = ChatPromptTemplate.from_template("{input} için kısa açıklama yaz.") | model
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are a comedian who tells jokes about {topic}."),
+        ("human", "Tell me {joke_count} jokes."),
+    ]
+)
 
-extended_chain = chain1 | (lambda out: {"input": out.content}) | chain2
-print(extended_chain.invoke({"kategori": "mobil uygulama"}).content)
+uppercase_output = RunnableLambda(lambda x: x.upper())
+count_words = RunnableLambda(lambda x: f"Word count: {len(x.split())}\n{x}")
+
+chain = prompt_template | model | StrOutputParser() | uppercase_output | count_words
+
+result = chain.invoke({"topic": "lawyers", "joke_count": 3})
+print(result)
+```
+Zincirin içerisindeki ilk üç kısım bizim normal bir zincirimizdi. Diğer iki runnable ı ekleyerek zinciri genişlettik. Şu şekilde de yazabiliriz:
+
+```bash
+usual_chain = prompt_template | model | StrOutputParser()
+extended_chain = usual_chain | uppercase_output | count_words
 ```
 
 ### Parallel – Paralel Zincirler
-Aynı girdiyi farklı zincirlere paralel olarak gönderip çoklu çıktı almak için kullanılır. Örneğin: aynı metni hem özetle hem İngilizce'ye çevir.
+Aynı girdiyi farklı zincirlere paralel olarak gönderip çoklu çıktı almak için kullanılır. Örneğin bir durumun artıları ve eksilerini incelerken bu iki durumu paralel olarak yürütebiliriz.
 
+Öncelikle model ve şablon tanımını yapalım:
 ```bash
-from langchain_core.runnables import RunnableParallel
-
 model = ChatOpenAI(model="gpt-4o")
 
-summary = ChatPromptTemplate.from_template("Metni özetle: {metin}") | model
-translate = ChatPromptTemplate.from_template("Metni İngilizceye çevir: {metin}") | model
+# Define prompt template
+prompt_template = ChatPromptTemplate.from_messages(
+    [
+        ("system", "You are an expert product reviewer."),
+        ("human", "List the main features of the product {product_name}."),
+    ]
+)
+```
+Sonrasında artıları analiz eden fonksiyonu yazalım:
+```bash
+def analyze_pros(features):
+    pros_template = ChatPromptTemplate.from_messages(
+        [
+            ("system", "You are an expert product reviewer."),
+            (
+                "human",
+                "Given these features: {features}, list the pros of these features.",
+            ),
+        ]
+    )
+    return pros_template.format_prompt(features=features)
+```
+Eksileri analiz eden fonksiyonu yazalım:
+```bash
+def analyze_cons(features):
+    cons_template = ChatPromptTemplate.from_messages(
+        [
+            ("system", "You are an expert product reviewer."),
+            (
+                "human",
+                "Given these features: {features}, list the cons of these features.",
+            ),
+        ]
+    )
+    return cons_template.format_prompt(features=features)
+```
+Sonrasında da bu analiz sonuçlarını birleştiren fonksiyonu yazalım:
+```bash
+def combine_pros_cons(pros, cons):
+    return f"Pros:\n{pros}\n\nCons:\n{cons}"
+```
+Bu iki durum için zincirler tanımlayalım:
+```bash
+pros_branch_chain = (
+    RunnableLambda(lambda x: analyze_pros(x)) | model | StrOutputParser()
+)
 
-parallel_chain = RunnableParallel(ozet=summary, ceviri=translate)
-result = parallel_chain.invoke({"metin": "Yapay zeka hızla gelişiyor."})
-
-print("Özet:", result["ozet"].content)
-print("Çeviri:", result["ceviri"].content)
-
+cons_branch_chain = (
+    RunnableLambda(lambda x: analyze_cons(x)) | model | StrOutputParser()
+)
 ```
 
+Bu zincirleri paralel çalıştırabilmek için ikisini de başka bir zincire Runnable Parallel ile ekleyelim ve sonuç alalım:
+```bash
+chain = (
+    prompt_template
+    | model
+    | StrOutputParser()
+    | RunnableParallel(branches={"pros": pros_branch_chain, "cons": cons_branch_chain})
+    | RunnableLambda(lambda x: combine_pros_cons(x["branches"]["pros"], x["branches"]["cons"]))
+)
+
+result = chain.invoke({"product_name": "MacBook Pro"})
+print(result)
+```
+
+
 ### Branching – Şarta Göre Yönlendirme (Router)
-Kullanıcının amacına göre farklı zincirlere yönlendirir. Koşullu dallanma yapıyor. Örneğin: "özetle" derse özet zinciri, "çevir" derse çeviri zinciri çalışır.
+Kullanıcının amacına göre farklı zincirlere yönlendirir. Koşullu dallanma yapıyor. 
+Bu zincir yapısınınv ilk aşamasında sınıflandırma yapılır. Örneğin müşteriden gelen geri bildirime göre pozitif, negatif, tarafsız gibi durum belirlenecek. Sonrasında bu durum zincirlerinden birine yönlendirilerek o zincir yürütülecek.
 
 ```bash
 model = ChatOpenAI(model="gpt-4o")
@@ -343,10 +431,19 @@ print(output.content)
 ```
 
 
+
+
 ```bash
 
 ```
 
+```bash
+
+```
+
+```bash
+
+```
 
 
 
