@@ -430,7 +430,16 @@ output = router({"görev": "çeviri", "metin": "LangChain çok güçlü bir ara�
 print(output.content)
 ```
 
+## 4. RAG
+Bu yöntem ile dil modelleri sadece eğitildiği verilerden değil, dış kaynaklardan da bilgi çekebilir. Bu sayede daha doğru ve güvenilir cevaplar elde ederiz. Önce bilgiyi çekecek (retrieve), sonrasında bu bilgiyi kullanarak yeni bir cevap üretecek (generation).
 
+Fakat diyelim ki elimizdeki veri büyük bir pdf. Dil modeli bu büyük pdf'ten veri çekemez, token sayısını aşar. Dolayısıyla bu büyük pdf i daha küçük chunklara bölerek (text splitting) bu chuncklar içerisinde bilgi arar. Bilgiyi arama işleminde anlamsal olarak en alakalı verileri bulmaya çalışır. 
+
+Burada metinleri vektöre dönüştürme, yani embedding devreye girer. Kullanıcının sorusu da, bilgiler de vektöre dönüştürülür. Sorunun vektörüne en yakın olan bilgi vektörleri bulunmaya çalışılır. Bu anlamda embedding işlemi için hazırlanmış modelleri kullanabiliriz.
+
+Aynı zamanda bu vektörleri saklamak için bir veritabanına ihtiyacımız var. Bunun için chroma database kullanabiliriz.
+
+### Text Splitting Türleri
 
 
 ```bash
@@ -440,10 +449,5 @@ print(output.content)
 ```bash
 
 ```
-
-```bash
-
-```
-
 
 
