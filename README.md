@@ -5,7 +5,6 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 ## İçindekiler
 
 ### Git
-
 - [Git Reposu Oluşturma ve İlk Commit](Git-Studies/git-notes.md#1-git-reposu-oluşturma-ve-ilk-commit)
 - [Dosya Takibi ve Geri Alma İşlemleri](Git-Studies/git-notes.md#2-dosya-takibi-ve-geri-alma-işlemleri)
 - [Uzak Depo ile Senkronizasyon](Git-Studies/git-notes.md#3-uzak-depo-ile-senkronizasyon)
@@ -14,7 +13,6 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Fork ve Pull Request Süreci](Git-Studies/git-notes.md#6-fork-ve-pull-request-süreci)
 
 ### Python
-
 - [Python Projesi Nasıl Yapılandırılır?](Python-Studies/configurations.md#1-python-projesi-nasıl-yapılandırılır)
 - [Virtual Environment](Python-Studies/configurations.md#2-virtual-environment-venv)
 - [Python Paket Yapısı](Python-Studies/configurations.md#3-python-paket-yapısı)
@@ -23,7 +21,6 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [.gitignore Dosyası](Python-Studies/configurations.md#6-gitignore-dosyası)
 
 ### Prompt-Engineering
-
 - [Giriş](Prompt-Engineering/notes.md#giriş)
 - [Teknikler](Prompt-Engineering/notes.md#teknikler)
   - [Zero-Shot Prompting](Prompt-Engineering/notes.md#1-zero-shot-prompting)
@@ -43,6 +40,11 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
 - [Zincirler](Langchain-Studies/notes.md#3-zincirler)
 - [RAG](Langchain-Studies/notes.md#4-rag)
+- [RAG Project](Langchain-Studies/Langchain-Assistant/)
+
+### Huawei Ai Course
+- [Ai Overview](Huawei-Ai-Course/notes.md#ai-overwiew)
+- [Machine Learning Overview](Huawei-Ai-Course/notes.md#machine-learning-overview)
 
 
 ## Katkı ve Güncellemeler
