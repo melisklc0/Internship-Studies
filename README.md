@@ -14,7 +14,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 
 ### Python
 - [Python Projesi Nasıl Yapılandırılır?](Python-Studies/configurations.md#1-python-projesi-nasıl-yapılandırılır)
-- [Virtual Environment](Python-Studies/configurations.md#2-virtual-environment-venv)
+- [Virtual Environment](Python-Studies/configurations.md#2-virtual-environment)
 - [Python Paket Yapısı](Python-Studies/configurations.md#3-python-paket-yapısı)
 - [Poetry Kullanma](Python-Studies/configurations.md#4-poetry-kullanma)
 - [Python UV Kullanma](Python-Studies/configurations.md#5-python-uv-kullanma)
@@ -40,10 +40,10 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
 - [Zincirler](Langchain-Studies/notes.md#3-zincirler)
 - [RAG](Langchain-Studies/notes.md#4-rag)
-- [RAG Project](Langchain-Studies/Langchain-Assistant/)
+- [RAG Project](Langchain-Studies/Langchain-Assistant/README.md)
 
 ### Huawei Ai Course
-- [Ai Overview](Huawei-Ai-Course/notes.md#ai-overwiew)
+- [Ai Overview](Huawei-Ai-Course/notes.md#ai-overview)
 - [Machine Learning Overview](Huawei-Ai-Course/notes.md#machine-learning-overview)
 
 

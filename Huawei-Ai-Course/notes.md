@@ -1,6 +1,6 @@
 # Huawei Ai Kurs Notları
 
-# Ai Overwiew
+# Ai Overview
 
 Symbolism:   
 Connectionism: Simple processing yerine nöronlar kullanılmalı.  
