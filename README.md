@@ -5,8 +5,8 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 ## İçindekiler
 
 ### Git
-- [Git Reposu Oluşturma ve İlk Commit](https://github.com/melisklc0/Langchain-Assistant/blob/2d0572db1937305342f782567bb708f5ca4c16de/README.md#langchain-assistant)
-- [Dosya Takibi ve Geri Alma İşlemleri](https://github.com/melisklc0/Langchain-Assistant/blob/2d0572db1937305342f782567bb708f5ca4c16de/README.md#langchain-assistant)
+- [Git Reposu Oluşturma ve İlk Commit](Git-Studies/git-notes.md#1-git-reposu-olu%C5%9Fturma-ve-i%CC%87lk-commit)
+- [Dosya Takibi ve Geri Alma İşlemleri](Git-Studies/git-notes.md#2-dosya-takibi-ve-geri-alma-i%CC%87%C5%9Flemleri)
 - [Uzak Depo ile Senkronizasyon](Git-Studies/git-notes.md#3-uzak-depo-ile-senkronizasyon)
 - [Branch Kullanımı](Git-Studies/git-notes.md#4-branch-kullanımı)
 - [Commit Yönetimi](Git-Studies/git-notes.md#5-commit-yönetimi)
@@ -25,7 +25,7 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Teknikler](Prompt-Engineering/notes.md#teknikler)
   - [Zero-Shot Prompting](Prompt-Engineering/notes.md#1-zero-shot-prompting)
   - [Few-Shot Prompting](Prompt-Engineering/notes.md#2-few-shot-prompting)
-  - [Düşünce Zinciri (CoT) İstemleri](https://github.com/melisklc0/Langchain-Assistant/blob/2d0572db1937305342f782567bb708f5ca4c16de/README.md#langchain-assistant)
+  - [Düşünce Zinciri (CoT) İstemleri](Prompt-Engineering/notes.md#3-d%C3%BC%C5%9F%C3%BCnce-zinciri-cot-i%CC%87stemleri)
   - [Üretilmiş Bilgi Sistemleri](Prompt-Engineering/notes.md#4-üretilmiş-bilgi-sistemleri)
   - [Prompt Chaining](Prompt-Engineering/notes.md#5-prompt-chaining)
   - [Düşünce Ağacı (ToT)](Prompt-Engineering/notes.md#6-düşünce-ağacı-tot)
@@ -40,11 +40,12 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
 - [Zincirler](Langchain-Studies/notes.md#3-zincirler)
 - [RAG](Langchain-Studies/notes.md#4-rag)
-- [RAG Project](https://github.com/melisklc0/Langchain-Assistant/blob/2d0572db1937305342f782567bb708f5ca4c16de/README.md#langchain-assistant)
+- [Assistant Project](Langchain-Studies/Langchain-Assistant/README.md)
 
 ### Huawei Ai Course
 - [Ai Overview](Huawei-Ai-Course/notes.md#ai-overview)
 - [Machine Learning Overview](Huawei-Ai-Course/notes.md#machine-learning-overview)
+- [Deep Learning Overview](Huawei-Ai-Course/notes.md#deep-learning-overview)
 
 
 ## Katkı ve Güncellemeler

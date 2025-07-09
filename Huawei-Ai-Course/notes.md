@@ -74,3 +74,21 @@ Product recommendatitons, segment customers based on customer data, diognose a d
 
 **Reinforcement learning:** Algoritmayı ödül ve ceza yöntemine göre eğitir. Agent, çevresi ile etkileşime girer, doğru ise ödül, yanlış ise ceza verilir.
 
+## Feature Selection
+Filter: Filtre metodları modelden bağımsız
+Wrapper: Feature subset tanımlamak için bir tahmin modeli kullanır
+Embedded: Bu metodlar future selection'u modelin bi yapısı olarak ele alır  
+
+Bias: Beklenen/ortalama tahmin değerinin gerçek değerden ne kadar farklı olduğu
+
+Variance: Tahmin değerinin, her tahminde ortalama değerden ne kadar değiştiği
+
+Dependent variable: tahmin edilecek değer
+independent variable: tahmin etmek için kullanılacak değer
+
+# Deep Learning Overview
+
+Derin öğrenme modeli unsupervised feature learning ve feature hierarchy learning'e dayanır.
+
+Feature selection/extraction kısmında daha otomatiktir.
+
