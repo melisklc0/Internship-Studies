@@ -40,13 +40,10 @@ Bu repo, Qkare Bilgi Teknolojileri'ndeki deneme sürecimde öğrendiğim konular
 - [Prompt Şablonları](Langchain-Studies/notes.md#2-prompt-şablonları)
 - [Zincirler](Langchain-Studies/notes.md#3-zincirler)
 - [RAG](Langchain-Studies/notes.md#4-rag)
-- [Assistant Project](Langchain-Studies/Langchain-Assistant/README.md)
+- [Assistant Project](https://github.com/melisklc0/Langchain-Assistant)
 
 ### Huawei Ai Course
-- [Ai Overview](Huawei-Ai-Course/notes.md#ai-overview)
-- [Machine Learning Overview](Huawei-Ai-Course/notes.md#machine-learning-overview)
-- [Deep Learning Overview](Huawei-Ai-Course/notes.md#deep-learning-overview)
-
+- [Notlar](https://github.com/melisklc0/Huawei-Ai-Course)
 
 ## Katkı ve Güncellemeler
 
